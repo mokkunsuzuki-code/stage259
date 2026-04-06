@@ -1,0 +1,10 @@
+{
+  "description": "Fill this after publishing the anchor bundle to an external location such as GitHub Release.",
+  "published_at": null,
+  "published_bundle_sha256": "5c9af5d444109d14618d392bcb83356c4f8726e32079262924a078cc301f26f6",
+  "published_manifest_sha256": "3b514af0fbffa269524173a77ff00aa02d617296ad11cb61c3b6e8adfc27d34b",
+  "release_tag": null,
+  "release_url": null,
+  "stage": "stage258",
+  "version": 1
+}

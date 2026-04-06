@@ -1,0 +1,20 @@
+{
+  "anchor_type": "external_release_ready_anchor",
+  "artifacts": {
+    "bundle_path": "out/anchors/stage258_third_party_chain_bundle.tar.gz",
+    "bundle_sha256": "5c9af5d444109d14618d392bcb83356c4f8726e32079262924a078cc301f26f6",
+    "chain_index_path": "out/third_party_chain/chain_index.json"
+  },
+  "chain_summary": {
+    "chain_index_sha256": "51cdc50db70a438e1decfb3a7f541a2135dfd5f041e0e42d46f461fc8f8fe17d",
+    "latest_record_id": "record_0003",
+    "latest_record_sha256": "92b9866509f8553ee459e0eb244538ef69046d212df3d6da03372549c87129e6",
+    "record_count": 3
+  },
+  "generated_at": "2026-04-06T09:51:32Z",
+  "git_branch": "main",
+  "git_commit": "62cf9d6077d4234228c3fd5f7756d0c3abdcda78",
+  "repository": "https://github.com/mokkunsuzuki-code/stage258.git",
+  "stage": "stage258",
+  "version": 1
+}
