@@ -14,13 +14,13 @@ This stage extends Stage258 by adding:
 
 This transforms:
 
-- External anchor → **Externally verified anchor**
+- External anchor → Externally verified anchor
 
 ---
 
 ## Key Concept
 
-Execution history is already anchored (Stage258).
+Execution history is anchored (Stage258).
 
 Stage259 adds:
 
@@ -45,7 +45,7 @@ Each verifier:
 
 ## Important Accuracy
 
-This stage does **not claim trust in the verifier identity itself**.
+This stage does NOT claim trust in verifier identity.
 
 It records:
 
@@ -66,9 +66,7 @@ To strengthen trust further, combine with:
 
 Located in:
 
-
 out/verifier_chain/
-
 
 Includes:
 
@@ -93,9 +91,6 @@ CI automatically:
 rebuilds verifier chain
 verifies linkage and integrity
 publishes artifacts
-
-This ensures reproducibility beyond local environments.
-
 Relation to Stage258
 
 Stage258:
