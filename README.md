@@ -1,68 +1,64 @@
-# Stage258: External Anchor for Third-Party Execution Chain
+# Stage259: External Verifier Proof Chain
 
 ## Overview
 
-Stage258 anchors a **hash-chained third-party execution history** to an external, publicly verifiable location.
+Stage259 introduces a **verifier proof chain** that records external verification outcomes
+and links them to a published external anchor (Stage258).
 
-This stage extends Stage257 by adding:
+This stage extends Stage258 by adding:
 
-- Bundle packaging of execution history
-- SHA-256 integrity binding
-- Manifest describing chain state
-- External publication via GitHub Release
+- External verifier records
+- Hash-chained verification outcomes
+- Binding to published release metadata
+- Deterministic verification of verifier history
 
 This transforms:
 
-- "tamper-evident history" → "externally anchored verifiable history"
+- External anchor → **Externally verified anchor**
 
 ---
 
 ## Key Concept
 
-Execution chain:
+Execution history is already anchored (Stage258).
 
-A → B → C
+Stage259 adds:
 
-Each record is:
+Verifier A → Verifier B → Verifier C
 
-- linked via SHA-256
-- ordered deterministically
-- fully reproducible
+Each verifier:
 
-Stage258 then:
-
-1. Bundles the entire chain
-2. Computes SHA-256 of the bundle
-3. Generates a manifest
-4. Publishes artifacts externally
+- checks the published artifacts
+- records their result
+- is linked via SHA-256 to previous records
 
 ---
 
 ## What This Stage Proves
 
-- Multi-party execution history is reproducible
-- Chain integrity is verifiable
-- Bundle integrity is cryptographically bound
-- External publication creates a reference point
+- External verification results can be recorded deterministically
+- Each verifier record is cryptographically linked
+- Each record is bound to a published release (Stage258)
+- The full verifier chain is reproducible and verifiable
 
 ---
 
 ## Important Accuracy
 
-This stage does **not claim absolute immutability**.
+This stage does **not claim trust in the verifier identity itself**.
 
-Instead, it provides:
+It records:
 
-- Strong tamper detection
-- External anchoring
-- Increased cost of modification
+- who claimed verification
+- what was verified
+- how it was verified
 
-For stronger guarantees, combine with:
+To strengthen trust further, combine with:
 
-- Signed releases
-- OpenTimestamps
-- Sigstore / Rekor
-- Independent mirrors
+- verifier signatures (Ed25519 / GPG)
+- detached attestations (Sigstore / Rekor)
+- independent submission channels
+- timestamping (OpenTimestamps)
 
 ---
 
@@ -71,59 +67,55 @@ For stronger guarantees, combine with:
 Located in:
 
 
-out/anchors/
+out/verifier_chain/
 
 
 Includes:
 
-- bundle (.tar.gz)
-- manifest (.json)
-- manifest SHA256
-- receipt (external reference)
+- verifier_chain_index.json
+- verifier_record_0001.json
+- verifier_record_0002.json
+- verifier_record_0003.json
 
 ---
 
 ## Quick Run
 
 ```bash
-chmod +x tools/run_stage258_external_anchor.sh
-./tools/run_stage258_external_anchor.sh
+chmod +x tools/run_stage259_external_verifier_chain.sh
+./tools/run_stage259_external_verifier_chain.sh
 Verification
-python3 tools/verify_stage258_anchor.py
-GitHub Release (External Anchor)
+python3 tools/verify_external_verifier_chain.py
+GitHub Actions
 
-Example:
+CI automatically:
 
-https://github.com/mokkunsuzuki-code/stage258/releases/tag/stage258-v2
+rebuilds verifier chain
+verifies linkage and integrity
+publishes artifacts
 
-This serves as:
+This ensures reproducibility beyond local environments.
 
-Public reference point
-Integrity anchor
-External verification source
-Position in QSP Evolution
-
-Stage256:
-→ Independent execution record
-
-Stage257:
-→ Hash-chained execution history
+Relation to Stage258
 
 Stage258:
-→ Externally anchored execution history
+→ External anchor (Release + SHA256)
+
+Stage259:
+→ External verification of that anchor
 
 Philosophy
 
 This project does not claim:
 
 new cryptographic primitives
-theoretical breakthroughs
+absolute trust
 
 It focuses on:
 
 reproducibility
-verifiability
 auditability
+verifiability
 License
 
 MIT License
