@@ -1,0 +1,43 @@
+name: stage259-external-verifier-chain
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-external-verifier-chain:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run Stage259 external verifier chain
+        run: |
+          chmod +x tools/run_stage259_external_verifier_chain.sh
+          ./tools/run_stage259_external_verifier_chain.sh
+
+      - name: Verify external verifier chain
+        run: |
+          python3 tools/verify_external_verifier_chain.py
+
+      - name: Show verifier chain index
+        run: |
+          cat out/verifier_chain/verifier_chain_index.json
+
+      - name: Upload verifier chain artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage259-external-verifier-chain
+          path: |
+            out/verifier_chain
+            out/verifier_evidence
