@@ -24,3 +24,11 @@ signatures/*.sig.json
 # private keys
 keys/*_private.pem
 keys/*.key
+
+# secrets
+keys/
+*.pem
+*.key
+out/
+downloaded_*
+stage256/
